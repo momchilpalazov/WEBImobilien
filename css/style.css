@@ -1,0 +1,851 @@
+/* Общи стилове */
+:root {
+    --primary-color: #0056b3;
+    --secondary-color: #6c757d;
+    --accent-color: #ffc107;
+    --text-color: #212529;
+    --light-gray: #f8f9fa;
+    --border-color: #dee2e6;
+    --heading-line-color: #e9ecef;
+}
+
+body {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Стилове за заглавия */
+h1, h2, h3, h4, h5, h6 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    font-weight: 200;
+    color: var(--text-color);
+}
+/* footer h5 {
+    color: white;
+} */
+
+.footer h5 {
+    color: white;
+}
+
+/* Разделителна линия под заглавията */
+.heading-divider {
+    height: 3px;
+    background: #007bff;
+    margin: 1rem 0 2.5rem 0;
+    width: 100%;
+    position: relative;
+}
+
+.heading-divider::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent
+    );
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    to {
+        left: 100%;
+    }
+}
+
+.heading-divider::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 80px;
+    background: var(--primary-color);
+}
+
+/* Контейнери за съдържание */
+.content-container {
+    padding: 1rem 0;
+}
+
+.content-section {
+    margin-bottom: 3rem;
+}
+
+/* Стилове за карти и блокове */
+.card {
+    border: none;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилове за бутони */
+.btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+/* Стилове за изображения */
+.img-feature {
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стилове за блог */
+.blog-post {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.blog-post .content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.blog-post img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+/* Стилове за "За нас" страницата */
+.about-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+
+/* Стилове за форми */
+.form-control {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.15);
+    border-color: var(--primary-color);
+}
+
+/* Стилове за навигация */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: white;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.8rem 1.2rem !important;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Стилове за мета информация */
+.meta-info {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.meta-info i {
+    margin-right: 0.5rem;
+}
+
+/* Стилове за списъци */
+.custom-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.custom-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.custom-list li:last-child {
+    border-bottom: none;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Responsive стилове */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 2rem 0;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .blog-post .content {
+        font-size: 1rem;
+    }
+}
+
+/* Стилове за таблици */
+.table {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: var(--light-gray);
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 600;
+}
+
+/* Стилове за алерти */
+.alert {
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+}
+
+/* Стилове за пагинация */
+.pagination .page-link {
+    padding: 0.8rem 1.2rem;
+    margin: 0 0.2rem;
+    border-radius: 5px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('../images/hero-bg.jpg') center/cover;
+    padding: 100px 0;
+}
+
+/* Property Cards */
+.property-card {
+    position: relative;
+    transition: transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+}
+
+.property-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Section Titles */
+.section-title {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #007bff;
+}
+
+/* Language Switcher */
+.nav-item.dropdown img {
+    margin-right: 5px;
+}
+
+/* Footer */
+.site-footer {
+    border-top: 5px solid #007bff;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+.social-links a:hover {
+    color: #007bff !important;
+}
+
+/* Animations */
+.property-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .property-card {
+        margin-bottom: 20px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Loading State */
+.property-card img {
+    transition: opacity 0.3s;
+}
+
+.property-card img:not([src]) {
+    opacity: 0;
+}
+
+.property-card img[src] {
+    opacity: 1;
+}
+
+/* Search Form Enhancement */
+.card.shadow-sm {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card.shadow-sm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    min-width: 300px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transform: translateX(120%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Property Gallery */
+.property-gallery {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.property-gallery img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Property Meta */
+.property-meta i {
+    width: 20px;
+    text-align: center;
+    color: #007bff;
+}
+
+/* Price Card */
+.price {
+    color: #007bff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Property Gallery Grid */
+.property-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.property-gallery-grid a {
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: transform 0.2s;
+}
+
+.property-gallery-grid a:hover {
+    transform: scale(1.05);
+}
+
+.gallery-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Properties Page */
+.properties-page .card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.properties-page .property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+    position: sticky;
+    top: 20px;
+}
+
+@media (max-width: 991px) {
+    .filter-sidebar {
+        position: static;
+        margin-bottom: 30px;
+    }
+}
+
+/* Range Inputs */
+input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* Checkbox Styling */
+.form-check {
+    padding-left: 2rem;
+}
+
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Results Info */
+.results-info {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* Pagination */
+.pagination {
+    margin-bottom: 0;
+}
+
+.page-link {
+    color: #007bff;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.page-link:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.page-item.active .page-link {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+.page-link:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Responsive Pagination */
+@media (max-width: 576px) {
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .page-item {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Loading Indicator */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-overlay .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Properties Grid Container */
+.properties-grid-container {
+    position: relative;
+    min-height: 400px;
+}
+
+/* Stagger animation delay */
+.property-card:nth-child(1) { transition-delay: 0.1s; }
+.property-card:nth-child(2) { transition-delay: 0.2s; }
+.property-card:nth-child(3) { transition-delay: 0.3s; }
+.property-card:nth-child(4) { transition-delay: 0.4s; }
+.property-card:nth-child(5) { transition-delay: 0.5s; }
+.property-card:nth-child(6) { transition-delay: 0.6s; }
+
+/* Property Status Badge */
+.property-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.property-status.available {
+    background-color: #28a745;
+}
+
+.property-status.reserved {
+    background-color: #ffc107;
+}
+
+.property-status.rented {
+    background-color: #ffc107;
+}
+
+.property-status.sold {
+    background-color: #dc3545;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+    position: sticky;
+    top: 20px;
+}
+
+.property-types {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.property-types::-webkit-scrollbar {
+    width: 6px;
+}
+
+.property-types::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.property-types::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.property-types::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.property-types .form-check {
+    margin-bottom: 8px;
+}
+
+.property-group {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.group-title {
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.group-title .badge {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Property Features */
+.property-feature {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.property-feature:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+    border-radius: 0.5rem;
+}
+
+.feature-icon i {
+    font-size: 1.5rem;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+/* Gallery */
+.gallery-thumbnail {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 150px;
+    object-fit: cover;
+}
+
+.gallery-thumbnail:hover {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+#galleryModal .modal-body {
+    position: relative;
+    padding: 0;
+}
+
+#galleryModal .modal-body img {
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+#galleryModal .btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 1;
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+#galleryModal .btn-close:hover {
+    opacity: 1;
+}
+
+#galleryModal .modal-footer {
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Blog Posts Section Styles */
+.blog-posts-wrapper {
+    position: relative;
+    margin: 0 -15px;
+}
+
+.blog-posts-wrapper .row {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    padding: 0 15px;
+}
+
+.blog-posts-wrapper .row::-webkit-scrollbar {
+    display: none;
+}
+
+.blog-card {
+    background: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 15px;
+    min-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.blog-card .card-title a {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.blog-card .card-title a:hover {
+    color: var(--primary-color);
+}
+
+.blog-card .card-text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.blog-card .post-date {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.blog-card .post-date i {
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+.blog-card .btn-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 0;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.blog-card .btn-link:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.blog-card .btn-link i {
+    transition: transform 0.3s ease;
+}
+
+.blog-card .btn-link:hover i {
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .blog-card {
+        min-width: 260px;
+    }
+}
+
+/* Максимално специфични селектори за футъра */
+body .site-footer,
+body .site-footer h5,
+body .site-footer p,
+body .site-footer a,
+body .site-footer span,
+body .site-footer div,
+body .site-footer ul li,
+body .site-footer .footer-contact-info,
+body .site-footer .footer-bottom {
+    color: #ffffff !important;
+}
+
+/* Специални стилове за hover състояния */
+body .site-footer a:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Специфични стилове за социалните икони */
+body .site-footer .social-links a {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body .site-footer .social-links a:hover {
+    color: #007bff !important;
+}
+
+/* Допълнителен стил за принудително прилагане на цвят */
+.contact-page .site-footer *,
+.about-page .site-footer * {
+    color: #ffffff !important;
+} 

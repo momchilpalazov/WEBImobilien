@@ -1,0 +1,16 @@
+{
+    "name": "industrial/properties",
+    "description": "Industrial Properties Management System",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "phpmailer/phpmailer": "^6.9",
+        "league/oauth2-client": "^2.8",
+        "thenetworg/oauth2-azure": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

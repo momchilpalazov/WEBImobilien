@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS blog_posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title_bg VARCHAR(255) NOT NULL,
+    title_de VARCHAR(255),
+    title_ru VARCHAR(255),
+    title_en VARCHAR(255),
+    content_bg TEXT NOT NULL,
+    content_de TEXT,
+    content_ru TEXT,
+    content_en TEXT,
+    category ENUM('industry_articles', 'sector_news', 'investor_tips') NOT NULL,
+    status ENUM('draft', 'published') DEFAULT 'draft',
+    image_path VARCHAR(255),
+    author VARCHAR(100),
+    slug VARCHAR(255) NOT NULL UNIQUE,
+    views INT DEFAULT 0,
+    published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci; 

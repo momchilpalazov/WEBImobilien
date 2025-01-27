@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;display=swap');
+    </style>
+    <g fill="none" fill-rule="evenodd">
+        <!-- Първи ред - "INDUSTRIAL" -->
+        <text x="100" y="25" font-family="Montserrat, sans-serif" font-weight="700" font-size="24" letter-spacing="2" text-anchor="middle" fill="#1a1c20">
+            INDUSTRIAL
+        </text>
+        <!-- Втори ред - "PROPERTIES" -->
+        <text x="100" y="48" font-family="Montserrat, sans-serif" font-weight="600" font-size="20" letter-spacing="1" text-anchor="middle" fill="#2c3e50">
+            PROPERTIES
+        </text>
+        <!-- Декоративна линия под INDUSTRIAL -->
+        <line x1="45" y1="30" x2="155" y2="30" stroke="#007bff" stroke-width="0.5" opacity="0.5"/>
+    </g>
+</svg> 

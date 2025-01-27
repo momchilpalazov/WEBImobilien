@@ -1,0 +1,39 @@
+/* Material Design Icons */
+.icon-dashboard::before { content: "\F0E4C"; }
+.icon-building::before { content: "\F0D8E"; }
+.icon-message::before { content: "\F0369"; }
+.icon-handshake::before { content: "\F0F0D"; }
+.icon-users::before { content: "\F0632"; }
+.icon-settings::before { content: "\F0493"; }
+.icon-logout::before { content: "\F0343"; }
+.icon-bell::before { content: "\F009C"; }
+.icon-user::before { content: "\F0004"; }
+.icon-edit::before { content: "\F03EB"; }
+.icon-delete::before { content: "\F01B4"; }
+.icon-add::before { content: "\F0415"; }
+.icon-search::before { content: "\F0349"; }
+.icon-filter::before { content: "\F0232"; }
+.icon-sort::before { content: "\F045D"; }
+.icon-export::before { content: "\F0207"; }
+.icon-import::before { content: "\F0319"; }
+.icon-calendar::before { content: "\F00ED"; }
+.icon-chart::before { content: "\F0128"; }
+.icon-upload::before { content: "\F0587"; }
+.icon-download::before { content: "\F01DA"; }
+.icon-close::before { content: "\F0156"; }
+.icon-check::before { content: "\F012C"; }
+.icon-warning::before { content: "\F0026"; }
+.icon-info::before { content: "\F02FC"; }
+.icon-success::before { content: "\F0E1E"; }
+.icon-error::before { content: "\F0026"; }
+
+[class^="icon-"]::before,
+[class*=" icon-"]::before {
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+} 

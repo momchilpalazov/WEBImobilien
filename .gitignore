@@ -1,0 +1,33 @@
+# IDE и редактори
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Конфигурационни файлове
+config/database.php
+config/openai.php
+includes/config.php
+
+# Качени файлове
+uploads/
+!uploads/.gitkeep
+
+# Кеш и временни файлове
+cache/*
+!cache/.gitkeep
+tmp/
+*.log
+
+# Composer
+vendor/
+composer.phar
+
+# Други
+.env
+.env.*
+!.env.example
+*.bak
+*.swp
+.DS_Store
+Thumbs.db 
