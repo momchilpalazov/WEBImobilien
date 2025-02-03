@@ -1,0 +1,274 @@
+// Modal base
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $zindex-modal;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  background-color: rgba($dark, 0.5);
+
+  &.fade {
+    .modal-dialog {
+      transform: translate(0, -50px);
+      transition: transform 0.3s ease-out;
+    }
+  }
+
+  &.show {
+    .modal-dialog {
+      transform: none;
+    }
+  }
+}
+
+// Modal dialog
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: $spacer * 0.5;
+  pointer-events: none;
+
+  // Modal centered
+  &.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - #{$spacer});
+
+    &::before {
+      display: block;
+      height: calc(100vh - #{$spacer});
+      content: "";
+    }
+  }
+
+  // Modal scrollable
+  &.modal-dialog-scrollable {
+    display: flex;
+    max-height: calc(100% - #{$spacer});
+
+    .modal-content {
+      max-height: calc(100vh - #{$spacer});
+      overflow: hidden;
+    }
+
+    .modal-body {
+      overflow-y: auto;
+    }
+  }
+}
+
+// Modal content
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: $white;
+  background-clip: padding-box;
+  border: $border-width solid rgba($dark, 0.2);
+  border-radius: $border-radius-lg;
+  outline: 0;
+  @include shadow;
+}
+
+// Modal header
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacer $spacer * 1.25;
+  border-bottom: $border-width solid $border-color;
+  border-top-left-radius: $border-radius-lg;
+  border-top-right-radius: $border-radius-lg;
+
+  .modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .btn-close {
+    padding: $spacer * 0.5;
+    margin: -($spacer * 0.5) -($spacer * 0.5) -($spacer * 0.5) auto;
+  }
+}
+
+// Modal body
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: $spacer * 1.25;
+}
+
+// Modal footer
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: $spacer $spacer * 1.25;
+  border-top: $border-width solid $border-color;
+  border-bottom-right-radius: $border-radius-lg;
+  border-bottom-left-radius: $border-radius-lg;
+
+  > * {
+    margin: $spacer * 0.25;
+  }
+}
+
+// Modal sizes
+@include mobile {
+  .modal-dialog {
+    margin: $spacer * 0.5;
+  }
+}
+
+@include tablet {
+  .modal-dialog {
+    max-width: 500px;
+    margin: $spacer * 1.75 auto;
+  }
+
+  .modal-dialog-scrollable {
+    max-height: calc(100% - #{$spacer * 3.5});
+  }
+
+  .modal-dialog-centered {
+    min-height: calc(100% - #{$spacer * 3.5});
+
+    &::before {
+      height: calc(100vh - #{$spacer * 3.5});
+    }
+  }
+
+  .modal-sm {
+    max-width: 300px;
+  }
+}
+
+@include desktop {
+  .modal-lg,
+  .modal-xl {
+    max-width: 800px;
+  }
+
+  .modal-xl {
+    max-width: 1140px;
+  }
+}
+
+// Modal animations
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $zindex-modal-backdrop;
+  width: 100vw;
+  height: 100vh;
+  background-color: $dark;
+
+  &.fade {
+    opacity: 0;
+  }
+
+  &.show {
+    opacity: 0.5;
+  }
+}
+
+// Modal custom styles
+.modal-confirm {
+  .modal-dialog {
+    max-width: 400px;
+  }
+
+  .modal-header {
+    border: none;
+    padding-bottom: 0;
+  }
+
+  .modal-body {
+    text-align: center;
+    padding: $spacer * 1.5;
+
+    .icon-box {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto $spacer * 1.5;
+      border-radius: 50%;
+      z-index: 9;
+      text-align: center;
+      border: 3px solid $gray-200;
+
+      i {
+        font-size: 46px;
+        display: inline-block;
+        margin-top: 13px;
+      }
+    }
+
+    h4 {
+      color: $gray-900;
+      margin-bottom: $spacer;
+    }
+
+    p {
+      color: $gray-600;
+      margin-bottom: $spacer * 1.5;
+    }
+  }
+
+  .modal-footer {
+    border: none;
+    text-align: center;
+    padding: $spacer * 0.5 $spacer * 1.25 $spacer * 1.5;
+
+    button {
+      min-width: 100px;
+    }
+  }
+
+  &.modal-danger {
+    .icon-box {
+      border-color: rgba($danger, 0.2);
+      i {
+        color: $danger;
+      }
+    }
+  }
+
+  &.modal-success {
+    .icon-box {
+      border-color: rgba($success, 0.2);
+      i {
+        color: $success;
+      }
+    }
+  }
+
+  &.modal-warning {
+    .icon-box {
+      border-color: rgba($warning, 0.2);
+      i {
+        color: $warning;
+      }
+    }
+  }
+}
+
+// Modal loading
+.modal-loading {
+  .modal-body {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+} 

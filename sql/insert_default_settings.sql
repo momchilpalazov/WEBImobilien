@@ -1,0 +1,20 @@
+-- Добавяне на настройки по подразбиране
+INSERT IGNORE INTO site_settings (setting_key, setting_value) VALUES
+('site_name', 'Industrial Properties'),
+('site_description', 'Индустриални имоти и логистични бази'),
+('contact_email', 'contact@example.com'),
+('contact_phone', '+359 888 123 456'),
+('contact_address', 'ул. Примерна 1, София 1000, България'),
+('facebook_url', 'https://facebook.com/'),
+('linkedin_url', 'https://linkedin.com/'),
+('maintenance_mode', 'false'),
+('google_maps_api_key', ''),
+('items_per_page', '12'),
+('default_language', 'bg'),
+('available_languages', 'bg,en,de,ru'),
+('smtp_host', ''),
+('smtp_port', '587'),
+('smtp_username', ''),
+('smtp_password', ''),
+('smtp_from_email', 'noreply@example.com'),
+('smtp_from_name', 'Industrial Properties'); 

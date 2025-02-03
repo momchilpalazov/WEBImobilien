@@ -1,0 +1,44 @@
+# Конфигурационни файлове
+config/*.php
+.env
+*.env
+
+# Чувствителни данни
+config/database.php
+config/mail.php
+config/app.php
+
+# Кеш файлове
+cache/*
+*.cache
+
+# Логове
+logs/*
+*.log
+
+# Временни файлове
+tmp/*
+*.tmp
+
+# Качени файлове
+uploads/*
+public/uploads/*
+
+# Зависимости
+vendor/*
+node_modules/*
+
+# IDE файлове
+.idea/*
+.vscode/*
+*.sublime-project
+*.sublime-workspace
+
+# OS генерирани файлове
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 

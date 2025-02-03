@@ -1,0 +1,132 @@
+// Base typography styles
+html {
+  font-size: 16px;
+  
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  @include heading;
+  margin-bottom: $spacer;
+  color: $gray-900;
+}
+
+h1, .h1 { font-size: 2.5rem; }
+h2, .h2 { font-size: 2rem; }
+h3, .h3 { font-size: 1.75rem; }
+h4, .h4 { font-size: 1.5rem; }
+h5, .h5 { font-size: 1.25rem; }
+h6, .h6 { font-size: 1rem; }
+
+// Responsive headings
+@include mobile {
+  h1, .h1 { font-size: 2rem; }
+  h2, .h2 { font-size: 1.75rem; }
+  h3, .h3 { font-size: 1.5rem; }
+  h4, .h4 { font-size: 1.25rem; }
+  h5, .h5 { font-size: 1.1rem; }
+  h6, .h6 { font-size: 1rem; }
+}
+
+// Paragraphs
+p {
+  margin-top: 0;
+  margin-bottom: $spacer;
+}
+
+// Links
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: $transition-base;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-top: 0;
+  margin-bottom: $spacer;
+  padding-left: $spacer * 2;
+
+  ul, ol {
+    margin-bottom: 0;
+  }
+}
+
+// Description lists
+dl {
+  margin-top: 0;
+  margin-bottom: $spacer;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0;
+}
+
+// Text utilities
+.text-muted { color: $gray-600; }
+.text-primary { color: $primary; }
+.text-secondary { color: $secondary; }
+.text-success { color: $success; }
+.text-danger { color: $danger; }
+.text-warning { color: $warning; }
+.text-info { color: $info; }
+
+// Font weights
+.font-weight-light { font-weight: 300; }
+.font-weight-normal { font-weight: 400; }
+.font-weight-medium { font-weight: 500; }
+.font-weight-semibold { font-weight: 600; }
+.font-weight-bold { font-weight: 700; }
+
+// Text alignment
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+// Text transforms
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize { text-transform: capitalize; }
+
+// Text wrapping
+.text-wrap { white-space: normal; }
+.text-nowrap { white-space: nowrap; }
+.text-truncate { @include text-truncate; }
+
+// Font sizes
+.text-small { font-size: 0.875em; }
+.text-large { font-size: 1.25em; }
+
+// Line heights
+.line-height-1 { line-height: 1; }
+.line-height-sm { line-height: 1.25; }
+.line-height-base { line-height: $line-height-base; }
+.line-height-lg { line-height: 2; }
+
+// Letter spacing
+.letter-spacing-tight { letter-spacing: -0.05em; }
+.letter-spacing-normal { letter-spacing: normal; }
+.letter-spacing-wide { letter-spacing: 0.05em; } 

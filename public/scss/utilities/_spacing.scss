@@ -1,0 +1,108 @@
+// Spacing Variables
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  auto: auto
+);
+
+// Spacing Properties
+$spacing-properties: (
+  m: margin,
+  p: padding
+);
+
+// Spacing Sides
+$spacing-sides: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+  x: (left, right),
+  y: (top, bottom)
+);
+
+// Generate Spacing Utilities
+@each $prop-key, $prop in $spacing-properties {
+  // All sides
+  @each $size-key, $size in $spacers {
+    .#{$prop-key}-#{$size-key} {
+      #{$prop}: $size !important;
+    }
+  }
+
+  // Specific sides
+  @each $side-key, $side in $spacing-sides {
+    @each $size-key, $size in $spacers {
+      @if type-of($side) == list {
+        .#{$prop-key}#{$side-key}-#{$size-key} {
+          @each $s in $side {
+            #{$prop}-#{$s}: $size !important;
+          }
+        }
+      } @else {
+        .#{$prop-key}#{$side-key}-#{$size-key} {
+          #{$prop}-#{$side}: $size !important;
+        }
+      }
+    }
+  }
+}
+
+// Responsive Spacing
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @each $prop-key, $prop in $spacing-properties {
+      // All sides
+      @each $size-key, $size in $spacers {
+        .#{$prop-key}#{$infix}-#{$size-key} {
+          #{$prop}: $size !important;
+        }
+      }
+
+      // Specific sides
+      @each $side-key, $side in $spacing-sides {
+        @each $size-key, $size in $spacers {
+          @if type-of($side) == list {
+            .#{$prop-key}#{$side-key}#{$infix}-#{$size-key} {
+              @each $s in $side {
+                #{$prop}-#{$s}: $size !important;
+              }
+            }
+          } @else {
+            .#{$prop-key}#{$side-key}#{$infix}-#{$size-key} {
+              #{$prop}-#{$side}: $size !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Gap Utilities
+.gap-0 { gap: 0 !important; }
+.gap-1 { gap: $spacer * .25 !important; }
+.gap-2 { gap: $spacer * .5 !important; }
+.gap-3 { gap: $spacer !important; }
+.gap-4 { gap: $spacer * 1.5 !important; }
+.gap-5 { gap: $spacer * 3 !important; }
+
+.row-gap-0 { row-gap: 0 !important; }
+.row-gap-1 { row-gap: $spacer * .25 !important; }
+.row-gap-2 { row-gap: $spacer * .5 !important; }
+.row-gap-3 { row-gap: $spacer !important; }
+.row-gap-4 { row-gap: $spacer * 1.5 !important; }
+.row-gap-5 { row-gap: $spacer * 3 !important; }
+
+.column-gap-0 { column-gap: 0 !important; }
+.column-gap-1 { column-gap: $spacer * .25 !important; }
+.column-gap-2 { column-gap: $spacer * .5 !important; }
+.column-gap-3 { column-gap: $spacer !important; }
+.column-gap-4 { column-gap: $spacer * 1.5 !important; }
+.column-gap-5 { column-gap: $spacer * 3 !important; } 

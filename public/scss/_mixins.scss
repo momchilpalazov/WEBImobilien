@@ -1,0 +1,112 @@
+@use "sass:map";
+@use 'variables' as *;
+
+// Breakpoint mixins
+@mixin media-breakpoint-up($name) {
+  $min: map.get($breakpoints, $name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Get the infix for a given breakpoint
+@function breakpoint-infix($name, $breakpoints) {
+  $min: map.get($breakpoints, $name);
+  @return if($min == 0, "", "-#{$name}");
+}
+
+// Heading styles mixin
+@mixin heading {
+  font-family: $font-family-headings;
+  font-weight: 500;
+  line-height: 1.2;
+  color: $gray-900;
+}
+
+// Text truncate mixin
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Box shadow mixin
+@mixin box-shadow($shadow...) {
+  box-shadow: $shadow;
+}
+
+// Transition mixin
+@mixin transition($transition...) {
+  transition: $transition;
+}
+
+// Gradient mixin
+@mixin gradient($start-color, $end-color, $direction: 180deg) {
+  background: linear-gradient($direction, $start-color, $end-color);
+}
+
+// Border radius mixin
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+// Responsive font size mixin
+@mixin responsive-font-size($min-size, $max-size, $min-width: map-get($breakpoints, 'sm'), $max-width: map-get($breakpoints, 'xl')) {
+  font-size: $min-size;
+  
+  @media (min-width: $min-width) {
+    font-size: calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+  }
+  
+  @media (min-width: $max-width) {
+    font-size: $max-size;
+  }
+}
+
+// Strip unit helper function
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// Hover focus mixin
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+// Clearfix mixin
+@mixin clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// Screen reader only mixin
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// List unstyled mixin
+@mixin list-unstyled {
+  padding-left: 0;
+  list-style: none;
+} 

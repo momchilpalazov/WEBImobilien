@@ -1,0 +1,218 @@
+@use "sass:color";
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Form Controls
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $dark;
+  background-color: white;
+  background-clip: padding-box;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  transition: border-color .15s ease-in-out,
+              box-shadow .15s ease-in-out;
+
+  &:focus {
+    color: $dark;
+    background-color: white;
+    border-color: color.adjust($primary, $lightness: 25%);
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba($primary, .25);
+  }
+
+  &::placeholder {
+    color: color.adjust($dark, $lightness: 45%);
+    opacity: 1;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: color.adjust($dark, $lightness: 65%);
+    opacity: 1;
+  }
+}
+
+// Form Groups
+.form-group {
+  margin-bottom: 1rem;
+}
+
+// Form Label
+.form-label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+// Form Text
+.form-text {
+  display: block;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: color.adjust($dark, $lightness: 45%);
+}
+
+// Form Check
+.form-check {
+  position: relative;
+  display: block;
+  padding-left: 1.25rem;
+
+  .form-check-input {
+    position: absolute;
+    margin-top: .3rem;
+    margin-left: -1.25rem;
+  }
+
+  .form-check-label {
+    margin-bottom: 0;
+  }
+}
+
+// Inline Form Check
+.form-check-inline {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0;
+  margin-right: .75rem;
+
+  .form-check-input {
+    position: static;
+    margin-top: 0;
+    margin-right: .3125rem;
+    margin-left: 0;
+  }
+}
+
+// Form Validation
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  border-color: $success;
+  padding-right: calc(1.5em + .75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%234caf50' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(.375em + .1875rem) center;
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+
+  &:focus {
+    border-color: $success;
+    box-shadow: 0 0 0 .2rem rgba($success, .25);
+  }
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-color: $danger;
+  padding-right: calc(1.5em + .75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right calc(.375em + .1875rem) center;
+  background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+
+  &:focus {
+    border-color: $danger;
+    box-shadow: 0 0 0 .2rem rgba($danger, .25);
+  }
+}
+
+// Form Validation Feedback
+.valid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: $success;
+}
+
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: $danger;
+}
+
+.was-validated .form-control:valid ~ .valid-feedback,
+.was-validated .form-control:valid ~ .valid-tooltip,
+.form-control.is-valid ~ .valid-feedback,
+.form-control.is-valid ~ .valid-tooltip {
+  display: block;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.was-validated .form-control:invalid ~ .invalid-tooltip,
+.form-control.is-invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-tooltip {
+  display: block;
+}
+
+// Form Row
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+// Form Inline
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  .form-check {
+    width: 100%;
+  }
+
+  @include media-breakpoint-up(sm) {
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+
+    .form-group {
+      display: flex;
+      flex: 0 0 auto;
+      flex-flow: row wrap;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .input-group {
+      width: auto;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      padding-left: 0;
+    }
+
+    .form-check-input {
+      position: relative;
+      margin-top: 0;
+      margin-right: .25rem;
+      margin-left: 0;
+    }
+  }
+} 

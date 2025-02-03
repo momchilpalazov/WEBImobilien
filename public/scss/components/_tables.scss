@@ -1,0 +1,213 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:map";
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Table Base
+.table {
+  width: 100%;
+  margin-bottom: $spacer;
+  color: $dark;
+  background-color: transparent;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: $border-width solid $border-color;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: (2 * $border-width) solid $border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $border-width) solid $border-color;
+  }
+}
+
+// Table Variants
+@mixin table-variant($state, $background) {
+  .table-#{$state} {
+    &,
+    > th,
+    > td {
+      background-color: $background;
+    }
+
+    th,
+    td,
+    thead th,
+    tbody + tbody {
+      border-color: color.adjust($background, $lightness: -7.5%);
+    }
+  }
+}
+
+// Generate table variants
+@include table-variant("primary", color.adjust($primary, $lightness: 45%));
+@include table-variant("secondary", color.adjust($secondary, $lightness: 45%));
+@include table-variant("success", color.adjust($success, $lightness: 45%));
+@include table-variant("info", color.adjust($info, $lightness: 45%));
+@include table-variant("warning", color.adjust($warning, $lightness: 45%));
+@include table-variant("danger", color.adjust($danger, $lightness: 45%));
+@include table-variant("light", $light);
+@include table-variant("dark", color.adjust($dark, $lightness: 65%));
+
+// Table Small
+.table-sm {
+  th,
+  td {
+    padding: .3rem;
+  }
+}
+
+// Table Bordered
+.table-bordered {
+  border: $border-width solid $border-color;
+
+  th,
+  td {
+    border: $border-width solid $border-color;
+  }
+
+  thead {
+    th,
+    td {
+      border-bottom-width: 2 * $border-width;
+    }
+  }
+}
+
+// Table Borderless
+.table-borderless {
+  th,
+  td,
+  thead th,
+  tbody + tbody {
+    border: 0;
+  }
+}
+
+// Table Striped
+.table-striped {
+  tbody tr:nth-of-type(#{2}n+1) {
+    background-color: rgba(0, 0, 0, .05);
+  }
+}
+
+// Table Hover
+.table-hover {
+  tbody tr {
+    &:hover {
+      color: $dark;
+      background-color: rgba(0, 0, 0, .075);
+    }
+  }
+}
+
+// Table Active
+.table-active {
+  &,
+  > th,
+  > td {
+    background-color: rgba(0, 0, 0, .075);
+  }
+}
+
+// Table Responsive
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  > .table-bordered {
+    border: 0;
+  }
+}
+
+// Responsive tables for different breakpoints
+@each $breakpoint in map.keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    .table-responsive#{$infix} {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      > .table-bordered {
+        border: 0;
+      }
+    }
+  }
+}
+
+// Table Dark
+.table-dark {
+  color: white;
+  background-color: $dark;
+
+  th,
+  td,
+  thead th {
+    border-color: color.adjust($dark, $lightness: 7.5%);
+  }
+
+  &.table-bordered {
+    border: 0;
+  }
+
+  &.table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: rgba(255, 255, 255, .05);
+    }
+  }
+
+  &.table-hover {
+    tbody tr {
+      &:hover {
+        color: white;
+        background-color: rgba(255, 255, 255, .075);
+      }
+    }
+  }
+}
+
+// Caption
+caption {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  color: color.adjust($dark, $lightness: 45%);
+  text-align: left;
+  caption-side: bottom;
+}
+
+// Utilities
+.table-nowrap {
+  th,
+  td {
+    white-space: nowrap;
+  }
+}
+
+// Table Fixed Layout
+.table-fixed {
+  table-layout: fixed;
+}
+
+// Breakpoint infix
+@function breakpoint-infix($name, $breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+}
+
+// Breakpoint min
+@function breakpoint-min($name, $breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+} 

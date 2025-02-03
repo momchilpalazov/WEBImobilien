@@ -1,0 +1,124 @@
+// Font Sizes
+$font-sizes: (
+  1: $font-size-base * 2.5,
+  2: $font-size-base * 2,
+  3: $font-size-base * 1.75,
+  4: $font-size-base * 1.5,
+  5: $font-size-base * 1.25,
+  6: $font-size-base,
+  7: $font-size-base * .875,
+  8: $font-size-base * .75
+);
+
+@each $size, $value in $font-sizes {
+  .fs-#{$size} {
+    font-size: $value !important;
+  }
+}
+
+// Font Weight
+.fw-lighter { font-weight: lighter !important; }
+.fw-light   { font-weight: 300 !important; }
+.fw-normal  { font-weight: 400 !important; }
+.fw-medium  { font-weight: 500 !important; }
+.fw-semibold{ font-weight: 600 !important; }
+.fw-bold    { font-weight: 700 !important; }
+.fw-bolder  { font-weight: bolder !important; }
+
+// Font Style
+.fst-italic     { font-style: italic !important; }
+.fst-normal     { font-style: normal !important; }
+
+// Text Transform
+.text-lowercase  { text-transform: lowercase !important; }
+.text-uppercase  { text-transform: uppercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
+
+// Text Decoration
+.text-decoration-none    { text-decoration: none !important; }
+.text-decoration-underline { text-decoration: underline !important; }
+.text-decoration-line-through { text-decoration: line-through !important; }
+
+// Text Alignment
+.text-start   { text-align: left !important; }
+.text-center  { text-align: center !important; }
+.text-end     { text-align: right !important; }
+
+// Text Wrapping and Overflow
+.text-wrap    { white-space: normal !important; }
+.text-nowrap  { white-space: nowrap !important; }
+.text-break   { word-wrap: break-word !important; word-break: break-word !important; }
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Line Height
+.lh-1    { line-height: 1 !important; }
+.lh-sm   { line-height: 1.25 !important; }
+.lh-base { line-height: $line-height-base !important; }
+.lh-lg   { line-height: 2 !important; }
+
+// Monospace
+.font-monospace { font-family: monospace !important; }
+
+// Reset Font
+.font-inherit { font: inherit !important; }
+
+// Text Opacity
+@for $i from 1 through 9 {
+  $opacity: $i * 0.1;
+  .text-opacity-#{$i}0 { opacity: $opacity !important; }
+}
+
+// Responsive Font Sizes
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+    @each $size, $value in $font-sizes {
+      .fs#{$infix}-#{$size} {
+        font-size: $value !important;
+      }
+    }
+
+    .text#{$infix}-start   { text-align: left !important; }
+    .text#{$infix}-center  { text-align: center !important; }
+    .text#{$infix}-end     { text-align: right !important; }
+  }
+}
+
+// Letter Spacing
+.letter-spacing-tight { letter-spacing: -0.05em !important; }
+.letter-spacing-normal { letter-spacing: normal !important; }
+.letter-spacing-wide { letter-spacing: 0.05em !important; }
+
+// Text Vertical Alignment
+.align-baseline    { vertical-align: baseline !important; }
+.align-top        { vertical-align: top !important; }
+.align-middle     { vertical-align: middle !important; }
+.align-bottom     { vertical-align: bottom !important; }
+.align-text-top   { vertical-align: text-top !important; }
+.align-text-bottom{ vertical-align: text-bottom !important; }
+
+// Word Spacing
+.word-spacing-tight { word-spacing: -0.05em !important; }
+.word-spacing-normal { word-spacing: normal !important; }
+.word-spacing-wide { word-spacing: 0.05em !important; }
+
+// Text Selection
+.user-select-all  { user-select: all !important; }
+.user-select-auto { user-select: auto !important; }
+.user-select-none { user-select: none !important; }
+
+// Font Smoothing
+.font-smoothing-antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-smoothing-auto {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+} 

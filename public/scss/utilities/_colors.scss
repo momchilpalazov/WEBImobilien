@@ -1,0 +1,123 @@
+// Theme Colors
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark
+);
+
+// Text Colors
+@each $color, $value in $theme-colors {
+  .text-#{$color} {
+    color: $value !important;
+  }
+}
+
+// Background Colors
+@each $color, $value in $theme-colors {
+  .bg-#{$color} {
+    background-color: $value !important;
+  }
+}
+
+// Gradient Backgrounds
+@each $color, $value in $theme-colors {
+  .bg-gradient-#{$color} {
+    background: linear-gradient(180deg, $value, darken($value, 15%)) !important;
+  }
+}
+
+// Hover Text Colors
+@each $color, $value in $theme-colors {
+  .text-hover-#{$color}:hover {
+    color: $value !important;
+  }
+}
+
+// Hover Background Colors
+@each $color, $value in $theme-colors {
+  .bg-hover-#{$color}:hover {
+    background-color: $value !important;
+  }
+}
+
+// Border Colors
+@each $color, $value in $theme-colors {
+  .border-#{$color} {
+    border-color: $value !important;
+  }
+}
+
+// Opacity Variants
+@for $i from 1 through 9 {
+  $opacity: $i * 0.1;
+  
+  @each $color, $value in $theme-colors {
+    .bg-#{$color}-#{$i}0 {
+      background-color: rgba($value, $opacity) !important;
+    }
+    
+    .text-#{$color}-#{$i}0 {
+      color: rgba($value, $opacity) !important;
+    }
+  }
+}
+
+// Light/Dark Text Contrast
+@each $color, $value in $theme-colors {
+  .bg-#{$color} {
+    @if (lightness($value) > 70) {
+      color: $dark !important;
+    } @else {
+      color: white !important;
+    }
+  }
+}
+
+// Link Colors
+@each $color, $value in $theme-colors {
+  .link-#{$color} {
+    color: $value;
+    text-decoration: none;
+
+    &:hover {
+      color: darken($value, 15%);
+      text-decoration: underline;
+    }
+  }
+}
+
+// Focus Ring Colors
+@each $color, $value in $theme-colors {
+  .focus-ring-#{$color} {
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba($value, .25) !important;
+    }
+  }
+}
+
+// Soft Background Colors
+@each $color, $value in $theme-colors {
+  .bg-soft-#{$color} {
+    background-color: mix(white, $value, 90%) !important;
+  }
+}
+
+// Outline Colors
+@each $color, $value in $theme-colors {
+  .outline-#{$color} {
+    outline: 2px solid $value !important;
+    outline-offset: 2px;
+  }
+}
+
+// Text Decoration Colors
+@each $color, $value in $theme-colors {
+  .text-decoration-#{$color} {
+    text-decoration-color: $value !important;
+  }
+} 

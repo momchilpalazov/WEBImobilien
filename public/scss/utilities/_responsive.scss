@@ -1,0 +1,158 @@
+// Display Properties
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex, grid, inline-grid;
+
+// Generate display utilities
+@each $display in $displays {
+  .d-#{$display} { display: $display !important; }
+}
+
+// Responsive display utilities
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    
+    @each $display in $displays {
+      .d#{$infix}-#{$display} { display: $display !important; }
+    }
+  }
+}
+
+// Hide/Show utilities
+.hidden { display: none !important; }
+.visible { display: block !important; }
+
+// Screen Reader utilities
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+}
+
+// Responsive Visibility
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    
+    .visible#{$infix} { display: block !important; }
+    .hidden#{$infix} { display: none !important; }
+  }
+}
+
+// Print Visibility
+@media print {
+  .visible-print { display: block !important; }
+  .hidden-print { display: none !important; }
+}
+
+// Responsive Floats
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    
+    .float#{$infix}-start { float: left !important; }
+    .float#{$infix}-end { float: right !important; }
+    .float#{$infix}-none { float: none !important; }
+  }
+}
+
+// Responsive Position
+$positions: static, relative, absolute, fixed, sticky;
+
+@each $position in $positions {
+  .position-#{$position} { position: $position !important; }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    
+    @each $position in $positions {
+      .position#{$infix}-#{$position} { position: $position !important; }
+    }
+  }
+}
+
+// Responsive Object Fit
+$object-fits: contain, cover, fill, none, scale-down;
+
+@each $value in $object-fits {
+  .object-fit-#{$value} { object-fit: $value !important; }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    
+    @each $value in $object-fits {
+      .object-fit#{$infix}-#{$value} { object-fit: $value !important; }
+    }
+  }
+}
+
+// Responsive Overflow
+$overflows: auto, hidden, visible, scroll;
+
+@each $value in $overflows {
+  .overflow-#{$value} { overflow: $value !important; }
+  .overflow-x-#{$value} { overflow-x: $value !important; }
+  .overflow-y-#{$value} { overflow-y: $value !important; }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    
+    @each $value in $overflows {
+      .overflow#{$infix}-#{$value} { overflow: $value !important; }
+      .overflow-x#{$infix}-#{$value} { overflow-x: $value !important; }
+      .overflow-y#{$infix}-#{$value} { overflow-y: $value !important; }
+    }
+  }
+}
+
+// Z-index utilities
+$z-indices: (
+  0: 0,
+  1: 100,
+  2: 200,
+  3: 300,
+  4: 400,
+  5: 500
+);
+
+@each $key, $value in $z-indices {
+  .z-#{$key} { z-index: $value !important; }
+}
+
+// Responsive Order
+@for $i from -1 through 12 {
+  .order-#{$i} { order: $i !important; }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    
+    @for $i from -1 through 12 {
+      .order#{$infix}-#{$i} { order: $i !important; }
+    }
+  }
+} 

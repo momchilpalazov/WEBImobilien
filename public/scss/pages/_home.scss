@@ -1,0 +1,35 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Home page specific styles
+.home {
+  &-hero {
+    padding: $spacer * 4 0;
+    background-color: $light;
+    text-align: center;
+
+    h1 {
+      margin-bottom: $spacer * 2;
+      color: $gray-900;
+    }
+  }
+
+  &-features {
+    padding: $spacer * 3 0;
+
+    .feature-card {
+      margin-bottom: $spacer * 2;
+    }
+  }
+
+  &-cta {
+    padding: $spacer * 4 0;
+    background-color: $primary;
+    color: $white;
+    text-align: center;
+
+    .btn-light {
+      margin-top: $spacer * 2;
+    }
+  }
+} 

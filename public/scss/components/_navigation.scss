@@ -1,0 +1,271 @@
+@use "sass:map";
+@use "sass:color";
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Media Breakpoint Mixin
+@mixin media-breakpoint-up($name) {
+  $min: map.get($breakpoints, $name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Navigation Base
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav-link {
+  display: block;
+  padding: $nav-link-padding-y $nav-link-padding-x;
+  color: color.adjust($dark, $lightness: 45%);
+  text-decoration: none;
+  transition: color .15s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: color.adjust($dark, $lightness: 30%);
+  }
+
+  &.disabled {
+    color: $gray-600;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+// Navigation Tabs
+.nav-tabs {
+  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+
+  .nav-item {
+    margin-bottom: -$nav-tabs-border-width;
+  }
+
+  .nav-link {
+    border: $nav-tabs-border-width solid transparent;
+    border-color: color.adjust($dark, $lightness: 65%) color.adjust($dark, $lightness: 65%) $border-color;
+    
+    &:hover,
+    &:focus {
+      border-color: $gray-200 $gray-200 $border-color;
+    }
+
+    &.disabled {
+      color: $gray-600;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: color.adjust($dark, $lightness: 20%);
+    background-color: white;
+    border-color: $border-color $border-color white;
+  }
+}
+
+// Navigation Pills
+.nav-pills {
+  .nav-link {
+    border-radius: $border-radius;
+
+    &.active,
+    .show > & {
+      color: white;
+      background-color: $primary;
+    }
+  }
+}
+
+// Navigation Fill and Justified
+.nav-fill {
+  .nav-item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+.nav-justified {
+  .nav-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+// Navbar
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+
+  .container,
+  .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    float: none;
+  }
+}
+
+.navbar-text {
+  display: inline-block;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navbar-toggler {
+  padding: .25rem .75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: $border-width solid transparent;
+  border-radius: $border-radius;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+// Navbar Themes
+@mixin navbar-variant($background, $color) {
+  background-color: $background;
+
+  .navbar-brand {
+    color: $color;
+
+    &:hover,
+    &:focus {
+      color: $color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: rgba($color, .5);
+
+      &:hover,
+      &:focus {
+        color: rgba($color, .7);
+      }
+
+      &.disabled {
+        color: rgba($color, .3);
+      }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+      color: $color;
+    }
+  }
+
+  .navbar-toggler {
+    color: rgba($color, .5);
+    border-color: rgba($color, .1);
+  }
+
+  .navbar-text {
+    color: rgba($color, .5);
+    a {
+      color: $color;
+
+      &:hover,
+      &:focus {
+        color: $color;
+      }
+    }
+  }
+}
+
+.navbar-light { @include navbar-variant($light, $dark); }
+.navbar-dark { @include navbar-variant($dark, white); }
+
+// Responsive Navbar
+@each $breakpoint in map.keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    
+    .navbar#{$infix}-expand {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      
+      .navbar-nav {
+        flex-direction: row;
+        
+        .dropdown-menu {
+          position: absolute;
+        }
+        
+        .nav-link {
+          padding-right: .5rem;
+          padding-left: .5rem;
+        }
+      }
+      
+      .navbar-collapse {
+        display: flex !important;
+      }
+      
+      .navbar-toggler {
+        display: none;
+      }
+    }
+  }
+} 

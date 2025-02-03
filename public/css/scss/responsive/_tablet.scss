@@ -1,0 +1,269 @@
+// Tablet styles
+@include tablet {
+  // Typography
+  html {
+    font-size: 15px;
+  }
+
+  h1, .h1 { font-size: 2.25rem; }
+  h2, .h2 { font-size: 1.875rem; }
+  h3, .h3 { font-size: 1.625rem; }
+  h4, .h4 { font-size: 1.375rem; }
+  h5, .h5 { font-size: 1.125rem; }
+  h6, .h6 { font-size: 1rem; }
+
+  // Layout
+  .container {
+    padding-right: $spacer * 1.5;
+    padding-left: $spacer * 1.5;
+  }
+
+  // Header
+  .header {
+    padding: $spacer * 1.5;
+
+    .header-title {
+      font-size: 1.75rem;
+    }
+
+    .header-actions {
+      .btn {
+        margin-left: $spacer * 0.5;
+      }
+    }
+  }
+
+  // Cards
+  .card {
+    margin-bottom: $spacer * 1.5;
+
+    .card-header {
+      padding: $spacer * 1.25;
+
+      .card-title {
+        font-size: 1.375rem;
+      }
+
+      .card-actions {
+        .btn {
+          margin-left: $spacer * 0.5;
+        }
+      }
+    }
+
+    .card-body {
+      padding: $spacer * 1.25;
+    }
+
+    .card-footer {
+      padding: $spacer * 1.25;
+    }
+  }
+
+  // Forms
+  .form-group {
+    margin-bottom: $spacer * 1.25;
+  }
+
+  .input-group {
+    > .form-control {
+      &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  // Tables
+  .table-responsive {
+    margin-bottom: $spacer * 1.5;
+
+    .table {
+      th, td {
+        padding: $spacer * 0.875;
+      }
+    }
+  }
+
+  // Modals
+  .modal {
+    .modal-dialog {
+      margin: $spacer * 1.75 auto;
+      max-width: 600px;
+
+      .modal-content {
+        .modal-header {
+          padding: $spacer * 1.25;
+
+          .modal-title {
+            font-size: 1.375rem;
+          }
+        }
+
+        .modal-body {
+          padding: $spacer * 1.25;
+        }
+
+        .modal-footer {
+          padding: $spacer * 1.25;
+          flex-direction: row;
+          align-items: center;
+
+          .btn {
+            margin: 0 $spacer * 0.25;
+          }
+        }
+      }
+    }
+  }
+
+  // Navigation
+  .navbar {
+    padding: $spacer * 1.25;
+
+    .navbar-brand {
+      img {
+        height: 36px;
+      }
+    }
+
+    .navbar-collapse {
+      .navbar-nav {
+        .nav-item {
+          .nav-link {
+            padding: $spacer $spacer * 1.25;
+          }
+
+          .dropdown-menu {
+            position: absolute;
+            float: left;
+            margin-top: $spacer * 0.25;
+            background-color: $white;
+            border: $border-width solid $border-color;
+            box-shadow: $box-shadow;
+            padding: $spacer * 0.5;
+          }
+        }
+      }
+    }
+  }
+
+  // Sidebar
+  .sidebar {
+    width: 320px;
+
+    .sidebar-header {
+      padding: $spacer * 1.25;
+    }
+
+    .sidebar-content {
+      .sidebar-nav {
+        .nav-item {
+          .nav-link {
+            padding: $spacer $spacer * 1.5;
+          }
+        }
+      }
+    }
+  }
+
+  // Utilities
+  .d-tablet-none {
+    display: none !important;
+  }
+
+  .d-tablet-block {
+    display: block !important;
+  }
+
+  .d-tablet-flex {
+    display: flex !important;
+  }
+
+  .text-tablet-left {
+    text-align: left !important;
+  }
+
+  .text-tablet-center {
+    text-align: center !important;
+  }
+
+  .text-tablet-right {
+    text-align: right !important;
+  }
+
+  // Grid system
+  .row {
+    margin-right: -($spacer * 0.75);
+    margin-left: -($spacer * 0.75);
+
+    > [class*="col-"] {
+      padding-right: $spacer * 0.75;
+      padding-left: $spacer * 0.75;
+    }
+  }
+
+  // Two column layout
+  .two-column-layout {
+    display: flex;
+
+    .main-content {
+      flex: 1;
+      margin-left: 320px;
+      transition: margin-left 0.3s ease-in-out;
+
+      &.expanded {
+        margin-left: 0;
+      }
+    }
+  }
+
+  // Charts and graphs
+  .chart-container {
+    height: 400px !important;
+  }
+
+  // File uploads
+  .file-upload {
+    .file-upload-preview {
+      height: 250px;
+    }
+  }
+
+  // Image galleries
+  .gallery {
+    .gallery-item {
+      width: calc(33.333% - #{$spacer});
+    }
+  }
+
+  // Dashboard widgets
+  .widget {
+    margin-bottom: $spacer * 1.5;
+
+    .widget-header {
+      padding: $spacer;
+    }
+
+    .widget-body {
+      padding: $spacer;
+    }
+
+    .widget-footer {
+      padding: $spacer;
+    }
+  }
+
+  // Loading states
+  .loading-overlay {
+    .loading-content {
+      width: 80%;
+      max-width: 400px;
+    }
+  }
+} 

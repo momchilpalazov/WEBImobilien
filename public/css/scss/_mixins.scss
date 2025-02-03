@@ -1,0 +1,189 @@
+// Breakpoint mixins
+@mixin mobile {
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: map-get($grid-breakpoints, sm)) and (max-width: map-get($grid-breakpoints, lg)) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    @content;
+  }
+}
+
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Typography mixins
+@mixin heading {
+  font-family: $font-family-headings;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Box shadow mixins
+@mixin shadow-sm {
+  box-shadow: 0 .125rem .25rem rgba($dark, .075);
+}
+
+@mixin shadow {
+  box-shadow: 0 .5rem 1rem rgba($dark, .15);
+}
+
+@mixin shadow-lg {
+  box-shadow: 0 1rem 3rem rgba($dark, .175);
+}
+
+// Transition mixins
+@mixin transition-all {
+  transition: $transition-base;
+}
+
+@mixin transition-transform {
+  transition: transform .2s ease-in-out;
+}
+
+// Button mixins
+@mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%)) {
+  color: color-contrast($background);
+  background-color: $background;
+  border-color: $border;
+
+  &:hover {
+    color: color-contrast($hover-background);
+    background-color: $hover-background;
+    border-color: $hover-border;
+  }
+}
+
+// Form mixins
+@mixin form-control {
+  display: block;
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $input-font-size;
+  line-height: $input-line-height;
+  color: $body-color;
+  background-color: $body-bg;
+  border: $border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  transition: $transition-base;
+
+  &:focus {
+    border-color: $input-focus-border-color;
+    box-shadow: $input-focus-box-shadow;
+    outline: 0;
+  }
+}
+
+// Card mixins
+@mixin card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: $body-bg;
+  background-clip: border-box;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+}
+
+// Animation mixins
+@mixin fade-in {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  animation: fadeIn .3s ease-in;
+}
+
+@mixin slide-in {
+  @keyframes slideIn {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  animation: slideIn .3s ease-out;
+}
+
+// Loading spinner mixin
+@mixin spinner($size: 2rem, $color: $primary) {
+  width: $size;
+  height: $size;
+  border: .25em solid rgba($color, .2);
+  border-right-color: $color;
+  border-radius: 50%;
+  animation: spinner .75s linear infinite;
+
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// Grid mixins
+@mixin make-container {
+  width: 100%;
+  padding-right: ($spacer * .75);
+  padding-left: ($spacer * .75);
+  margin-right: auto;
+  margin-left: auto;
+
+  @each $breakpoint, $container-max-width in $container-max-widths {
+    @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+// Accessibility mixins
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Focus outline mixin
+@mixin focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 .2rem rgba($primary, .25);
+} 

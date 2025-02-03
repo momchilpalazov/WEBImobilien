@@ -1,0 +1,209 @@
+// Base button styles
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $border-width solid transparent;
+  padding: $btn-padding-y $btn-padding-x;
+  font-size: $btn-font-size;
+  line-height: $btn-line-height;
+  border-radius: $btn-border-radius;
+  transition: $transition-base;
+  cursor: pointer;
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    @include focus-ring;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  // Icon spacing
+  i, .icon {
+    margin-right: .5rem;
+
+    &:last-child:first-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// Button variants
+.btn-primary {
+  @include button-variant($primary, $primary);
+}
+
+.btn-secondary {
+  @include button-variant($secondary, $secondary);
+}
+
+.btn-success {
+  @include button-variant($success, $success);
+}
+
+.btn-danger {
+  @include button-variant($danger, $danger);
+}
+
+.btn-warning {
+  @include button-variant($warning, $warning);
+}
+
+.btn-info {
+  @include button-variant($info, $info);
+}
+
+.btn-light {
+  @include button-variant($light, $light);
+}
+
+.btn-dark {
+  @include button-variant($dark, $dark);
+}
+
+// Outline buttons
+.btn-outline-primary {
+  @include button-variant(transparent, $primary, $primary, $primary);
+  color: $primary;
+}
+
+.btn-outline-secondary {
+  @include button-variant(transparent, $secondary, $secondary, $secondary);
+  color: $secondary;
+}
+
+.btn-outline-success {
+  @include button-variant(transparent, $success, $success, $success);
+  color: $success;
+}
+
+.btn-outline-danger {
+  @include button-variant(transparent, $danger, $danger, $danger);
+  color: $danger;
+}
+
+.btn-outline-warning {
+  @include button-variant(transparent, $warning, $warning, $warning);
+  color: $warning;
+}
+
+.btn-outline-info {
+  @include button-variant(transparent, $info, $info, $info);
+  color: $info;
+}
+
+.btn-outline-light {
+  @include button-variant(transparent, $light, $light, $light);
+  color: $light;
+}
+
+.btn-outline-dark {
+  @include button-variant(transparent, $dark, $dark, $dark);
+  color: $dark;
+}
+
+// Button sizes
+.btn-lg {
+  padding: ($btn-padding-y * 1.25) ($btn-padding-x * 1.25);
+  font-size: ($btn-font-size * 1.25);
+  border-radius: $border-radius-lg;
+}
+
+.btn-sm {
+  padding: ($btn-padding-y * 0.75) ($btn-padding-x * 0.75);
+  font-size: ($btn-font-size * 0.875);
+  border-radius: $border-radius-sm;
+}
+
+// Block button
+.btn-block {
+  display: block;
+  width: 100%;
+
+  + .btn-block {
+    margin-top: $spacer * 0.5;
+  }
+}
+
+// Icon only button
+.btn-icon {
+  padding: $btn-padding-y;
+  line-height: 1;
+
+  i, .icon {
+    margin: 0;
+  }
+}
+
+// Loading state
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+
+  > * {
+    opacity: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    @include spinner(1rem, currentColor);
+  }
+}
+
+// Button group
+.btn-group {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+
+  > .btn {
+    position: relative;
+    flex: 1 1 auto;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      z-index: 1;
+    }
+  }
+
+  > .btn:not(:first-child) {
+    margin-left: -$border-width;
+  }
+
+  > .btn:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  > .btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+// Button toolbar
+.btn-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .btn-group,
+  .input-group {
+    margin-right: $spacer * 0.5;
+    margin-bottom: $spacer * 0.5;
+  }
+} 

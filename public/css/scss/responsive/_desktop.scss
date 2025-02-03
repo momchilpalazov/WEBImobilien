@@ -1,0 +1,324 @@
+// Desktop styles
+@include desktop {
+  // Typography
+  html {
+    font-size: 16px;
+  }
+
+  h1, .h1 { font-size: 2.5rem; }
+  h2, .h2 { font-size: 2rem; }
+  h3, .h3 { font-size: 1.75rem; }
+  h4, .h4 { font-size: 1.5rem; }
+  h5, .h5 { font-size: 1.25rem; }
+  h6, .h6 { font-size: 1rem; }
+
+  // Layout
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-right: $spacer * 2;
+    padding-left: $spacer * 2;
+  }
+
+  // Header
+  .header {
+    padding: $spacer * 2;
+
+    .header-title {
+      font-size: 2rem;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: $spacer;
+
+      .btn {
+        min-width: 120px;
+      }
+    }
+  }
+
+  // Cards
+  .card {
+    margin-bottom: $spacer * 2;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+      @include shadow;
+    }
+
+    .card-header {
+      padding: $spacer * 1.5;
+
+      .card-title {
+        font-size: 1.5rem;
+      }
+
+      .card-actions {
+        display: flex;
+        align-items: center;
+        gap: $spacer * 0.5;
+      }
+    }
+
+    .card-body {
+      padding: $spacer * 1.5;
+    }
+
+    .card-footer {
+      padding: $spacer * 1.5;
+    }
+  }
+
+  // Forms
+  .form-group {
+    margin-bottom: $spacer * 1.5;
+  }
+
+  .form-control {
+    &:hover {
+      border-color: $gray-400;
+    }
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 0.2rem rgba($primary, 0.25);
+    }
+  }
+
+  // Tables
+  .table-responsive {
+    .table {
+      th, td {
+        padding: $spacer;
+      }
+
+      thead th {
+        position: sticky;
+        top: 0;
+        background-color: $white;
+        z-index: 1;
+      }
+
+      tbody {
+        tr {
+          transition: background-color 0.2s ease-in-out;
+
+          &:hover {
+            background-color: rgba($primary, 0.05);
+          }
+        }
+      }
+    }
+  }
+
+  // Modals
+  .modal {
+    .modal-dialog {
+      &.modal-lg {
+        max-width: 800px;
+      }
+
+      &.modal-xl {
+        max-width: 1140px;
+      }
+
+      .modal-content {
+        .modal-header {
+          padding: $spacer * 1.5;
+
+          .modal-title {
+            font-size: 1.5rem;
+          }
+        }
+
+        .modal-body {
+          padding: $spacer * 1.5;
+        }
+
+        .modal-footer {
+          padding: $spacer * 1.5;
+        }
+      }
+    }
+  }
+
+  // Navigation
+  .navbar {
+    padding: $spacer * 1.5;
+
+    .navbar-brand {
+      img {
+        height: 40px;
+      }
+    }
+
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          padding: $spacer $spacer * 1.5;
+          transition: color 0.2s ease-in-out;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+
+        .dropdown-menu {
+          margin-top: 0;
+          border: none;
+          @include shadow;
+          animation: dropdownFadeIn 0.2s ease-in-out;
+
+          .dropdown-item {
+            padding: $spacer * 0.75 $spacer * 1.5;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+              background-color: rgba($primary, 0.1);
+              padding-left: $spacer * 1.75;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Sidebar
+  .sidebar {
+    width: 280px;
+    transition: width 0.3s ease-in-out;
+
+    &.collapsed {
+      width: 70px;
+
+      .sidebar-header {
+        .sidebar-brand {
+          display: none;
+        }
+      }
+
+      .sidebar-nav {
+        .nav-item {
+          .nav-link {
+            padding: $spacer * 0.75;
+            text-align: center;
+
+            span {
+              display: none;
+            }
+
+            i, .icon {
+              margin: 0;
+              font-size: 1.25rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Dashboard
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: $spacer * 2;
+
+    .widget {
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: translateY(-3px);
+      }
+
+      &.widget-lg {
+        grid-column: span 8;
+      }
+
+      &.widget-md {
+        grid-column: span 6;
+      }
+
+      &.widget-sm {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  // Charts and graphs
+  .chart-container {
+    height: 450px !important;
+
+    canvas {
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  // File uploads
+  .file-upload {
+    .file-upload-preview {
+      height: 300px;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  // Image galleries
+  .gallery {
+    .gallery-item {
+      width: calc(25% - #{$spacer});
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05);
+        z-index: 1;
+      }
+    }
+  }
+
+  // Animations
+  @keyframes dropdownFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // Utilities
+  .hover-shadow {
+    transition: box-shadow 0.2s ease-in-out;
+
+    &:hover {
+      @include shadow;
+    }
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .hover-lift {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+} 

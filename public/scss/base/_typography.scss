@@ -1,0 +1,120 @@
+// Base Typography Styles
+@use "sass:color";
+@use '../variables' as *;
+@use '../mixins' as *;
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $dark;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $spacer;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1, .h1 { font-size: 2.5rem; }
+h2, .h2 { font-size: 2rem; }
+h3, .h3 { font-size: 1.75rem; }
+h4, .h4 { font-size: 1.5rem; }
+h5, .h5 { font-size: 1.25rem; }
+h6, .h6 { font-size: 1rem; }
+
+// Paragraphs
+p {
+  margin-bottom: $spacer;
+}
+
+// Links
+a {
+  color: $primary;
+  text-decoration: none;
+  
+  &:hover {
+    color: color.adjust($primary, $lightness: -15%);
+    text-decoration: underline;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-bottom: $spacer;
+  padding-left: $spacer * 2;
+}
+
+// Code
+code {
+  font-family: monospace;
+  padding: .2em .4em;
+  font-size: 85%;
+  background-color: rgba($dark, .05);
+  border-radius: $border-radius;
+}
+
+// Blockquotes
+blockquote {
+  margin: 0 0 $spacer;
+  padding: $spacer;
+  border-left: 5px solid $primary;
+  background-color: rgba($primary, .05);
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Small text
+small, .small {
+  font-size: 80%;
+  font-weight: 400;
+}
+
+// Mark text
+mark, .mark {
+  padding: 0.2em;
+  background-color: #fcf8e3;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.display-1 { font-size: 6rem; }
+.display-2 { font-size: 5.5rem; }
+.display-3 { font-size: 4.5rem; }
+.display-4 { font-size: 3.5rem; }
+
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+.text-center { text-align: center !important; }
+.text-justify { text-align: justify !important; }
+
+.text-lowercase { text-transform: lowercase !important; }
+.text-uppercase { text-transform: uppercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
+
+.font-weight-light { font-weight: 300 !important; }
+.font-weight-normal { font-weight: 400 !important; }
+.font-weight-bold { font-weight: 700 !important; }
+
+.font-italic { font-style: italic !important; }
+
+.text-primary { color: $primary !important; }
+.text-secondary { color: $secondary !important; }
+.text-success { color: $success !important; }
+.text-info { color: $info !important; }
+.text-warning { color: $warning !important; }
+.text-danger { color: $danger !important; }
+.text-light { color: $light !important; }
+.text-dark { color: $dark !important; }
+.text-muted { color: $gray-600 !important; }
+
+.text-decoration-none { text-decoration: none !important; }
+.text-break { word-break: break-word !important; }
+
+.text-reset { color: inherit !important; } 

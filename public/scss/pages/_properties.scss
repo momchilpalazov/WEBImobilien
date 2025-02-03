@@ -1,0 +1,35 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Properties page specific styles
+.properties {
+  &-filters {
+    padding: $spacer * 2;
+    background-color: $gray-100;
+    border-radius: $border-radius;
+    margin-bottom: $spacer * 2;
+  }
+
+  &-grid {
+    display: grid;
+    gap: $spacer * 2;
+    
+    @media (min-width: map.get($breakpoints, "sm")) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (min-width: map.get($breakpoints, "lg")) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &-card {
+    height: 100%;
+    transition: $transition-base;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $box-shadow;
+    }
+  }
+} 

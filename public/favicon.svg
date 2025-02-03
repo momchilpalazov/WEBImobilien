@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#2c3e50">
+        <!-- Основна сграда -->
+        <rect x="8" y="16" width="16" height="12"/>
+        <!-- Покрив -->
+        <polygon points="8,16 16,4 24,16"/>
+        <!-- Комин -->
+        <rect x="18" y="8" width="3" height="8"/>
+    </g>
+</svg> 

@@ -1,0 +1,209 @@
+@use '../variables' as *;
+@use "sass:color";
+
+// Alert Base
+.alert {
+  position: relative;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border: $border-width solid transparent;
+  border-radius: $border-radius;
+}
+
+// Alert Variants
+@mixin alert-variant($background, $border, $color) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  hr {
+    border-top-color: color.adjust($border, $lightness: -5%);
+  }
+
+  .alert-link {
+    color: color.adjust($color, $lightness: -10%);
+  }
+}
+
+// Generate alert variants
+.alert-primary {
+  @include alert-variant(
+    color.adjust($primary, $lightness: 45%),
+    color.adjust($primary, $lightness: 40%),
+    color.adjust($primary, $lightness: -10%)
+  );
+}
+
+.alert-secondary {
+  @include alert-variant(
+    color.adjust($secondary, $lightness: 45%),
+    color.adjust($secondary, $lightness: 40%),
+    color.adjust($secondary, $lightness: -10%)
+  );
+}
+
+.alert-success {
+  @include alert-variant(
+    color.adjust($success, $lightness: 45%),
+    color.adjust($success, $lightness: 40%),
+    color.adjust($success, $lightness: -10%)
+  );
+}
+
+.alert-info {
+  @include alert-variant(
+    color.adjust($info, $lightness: 45%),
+    color.adjust($info, $lightness: 40%),
+    color.adjust($info, $lightness: -10%)
+  );
+}
+
+.alert-warning {
+  @include alert-variant(
+    color.adjust($warning, $lightness: 45%),
+    color.adjust($warning, $lightness: 40%),
+    color.adjust($warning, $lightness: -10%)
+  );
+}
+
+.alert-danger {
+  @include alert-variant(
+    color.adjust($danger, $lightness: 45%),
+    color.adjust($danger, $lightness: 40%),
+    color.adjust($danger, $lightness: -10%)
+  );
+}
+
+.alert-light {
+  @include alert-variant(
+    $light,
+    color.adjust($light, $lightness: -5%),
+    color.adjust($light, $lightness: -45%)
+  );
+}
+
+.alert-dark {
+  @include alert-variant(
+    color.adjust($dark, $lightness: 65%),
+    color.adjust($dark, $lightness: 60%),
+    $dark
+  );
+}
+
+// Alert Link
+.alert-link {
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Alert Dismissible
+.alert-dismissible {
+  padding-right: 4rem;
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .75rem 1.25rem;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: .5;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .75;
+    }
+  }
+}
+
+// Alert with Icon
+.alert-with-icon {
+  padding-left: 4rem;
+
+  .alert-icon {
+    position: absolute;
+    top: 50%;
+    left: 1.25rem;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Alert Animations
+.alert {
+  &.fade {
+    opacity: 0;
+    transition: opacity .15s linear;
+    
+    &.show {
+      opacity: 1;
+    }
+  }
+}
+
+// Toast Notifications
+.toast {
+  position: fixed;
+  z-index: $zindex-tooltip;
+  padding: 1rem;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  background-color: rgba(white, .95);
+  backdrop-filter: blur(10px);
+  max-width: 350px;
+  overflow: hidden;
+  font-size: .875rem;
+  transition: all .15s ease-in-out;
+
+  &.toast-top-right {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  &.toast-top-left {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  &.toast-bottom-right {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  &.toast-bottom-left {
+    bottom: 1rem;
+    left: 1rem;
+  }
+
+  &.toast-success {
+    background-color: rgba($success, .95);
+    color: white;
+  }
+
+  &.toast-error {
+    background-color: rgba($danger, .95);
+    color: white;
+  }
+
+  &.toast-warning {
+    background-color: rgba($warning, .95);
+    color: white;
+  }
+
+  &.toast-info {
+    background-color: rgba($info, .95);
+    color: white;
+  }
+} 
