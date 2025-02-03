@@ -1,10 +1,21 @@
 <?php
 session_start();
+<<<<<<< HEAD
 require_once __DIR__ . '/vendor/autoload.php';
 
 require_once 'config/database.php';
 require_once 'src/Database/Database.php';
 use App\Database\Database;
+=======
+require __DIR__ . '/vendor/autoload.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once 'config/database.php';
+require_once 'src/Database/Database.php';
+use App\Database;
+>>>>>>> 8b1f889630bb64639cf007f246e163bd8da80b38
 
 // Проверка за режим на поддръжка - преместваме я преди всичко останало
 try {
@@ -60,6 +71,7 @@ try {
 } catch (PDOException $e) {
     die("Query failed: " . $e->getMessage());
 }
+<<<<<<< HEAD
 
 // Проверка на базовата функционалност
 $config = [
@@ -96,6 +108,8 @@ try {
 } catch (Exception $e) {
     echo "<h3 style='color: red;'>Error: " . $e->getMessage() . "</h3>";
 }
+=======
+>>>>>>> 8b1f889630bb64639cf007f246e163bd8da80b38
 ?>
 
 <!-- Hero Section -->

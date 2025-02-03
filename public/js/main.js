@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Import modules
 import { initializeAuth } from './modules/auth.js';
 import { initializeUI } from './modules/ui.js';
@@ -80,6 +81,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+=======
+>>>>>>> 8b1f889630bb64639cf007f246e163bd8da80b38
 document.addEventListener('DOMContentLoaded', function() {
     // Мобилно меню
     const mobileMenuBtn = document.createElement('button');
